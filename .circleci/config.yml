@@ -65,33 +65,33 @@ jobs:
       # -------------------------------
       # 7. Update GitOps Repository
       # -------------------------------
-      - run:
-          name: Update GitOps repository
-          command: |
-            git clone \
-              https://DanielAccount:${GITOPS_TOKEN}@github.com/DanielAccount/sample-spring-gitops.git \
-              gitops
-
-            cd gitops
-
-            echo "Updating Kubernetes image..."
-
-            sed -i \
-              "s|image:.*|image: ${DOCKERHUB_USERNAME}/sample-api:${CIRCLE_SHA1}|" \
-              deployment.yml
-
-            echo "Updated deployment.yml:"
-            grep "image:" deployment.yml
-
-            git config user.name "CircleCI"
-            git config user.email "circleci@users.noreply.github.com"
-
-            git add deployment.yml
-
-            git commit \
-              -m "Update sample-api image to ${CIRCLE_SHA1}" || true
-
-            git push origin main
+#      - run:
+#          name: Update GitOps repository
+#          command: |
+#            git clone \
+#              https://DanielAccount:${GITOPS_TOKEN}@github.com/DanielAccount/sample-spring-gitops.git\
+#              gitops
+#
+#            cd gitops
+#
+#            echo "Updating Kubernetes image..."
+#
+#            sed -i \
+#              "s|image:.*|image: ${DOCKERHUB_USERNAME}/sample-api:${CIRCLE_SHA1}|" \
+#              deployment.yml
+#
+#            echo "Updated deployment.yml:"
+#            grep "image:" deployment.yml
+#
+#            git config user.name "CircleCI"
+#            git config user.email "circleci@users.noreply.github.com"
+#
+#            git add deployment.yml
+#
+#            git commit \
+#              -m "Update sample-api image to ${CIRCLE_SHA1}" || true
+#
+#            git push origin main
 
 workflows:
   build:
