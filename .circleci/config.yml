@@ -62,9 +62,9 @@ jobs:
             docker push \
               "${DOCKERHUB_USERNAME}/sample-api:${CIRCLE_SHA1}"
 
-      # -------------------------------
-      # 7. Update GitOps Repository
-      # -------------------------------
+#       -------------------------------
+#       7. Update GitOps Repository
+#       -------------------------------
 #      - run:
 #          name: Update GitOps repository
 #          command: |
